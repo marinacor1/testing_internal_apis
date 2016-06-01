@@ -30,4 +30,17 @@ class Api::V1::ItemsControllerTest < ActionController::TestCase
       assert_response :success
       assert_equal item.name, item_params[:name]
     end
+
+    test "can update item" do
+      id = Item.first.id
+      previous_name = Item.first.name
+      item_params = { name: "NEW NAME"}
+
+      put :update, id: id, item: item_params, format: :json
+      item = Item.find_by(id: id)
+
+      assert_response :success
+      refute_equal previous_name, item.name
+      assert_equal "NEW NAME", item.name
+    end
 end
