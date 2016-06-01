@@ -1,9 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  description: MyText
+  name: Hammer
+  description: When it is this time, you stop
 
 two:
-  name: MyString
-  description: MyText
+  name: Nail
+  description: Nine inches
