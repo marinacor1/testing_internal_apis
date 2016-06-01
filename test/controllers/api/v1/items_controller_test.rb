@@ -21,4 +21,13 @@ class Api::V1::ItemsControllerTest < ActionController::TestCase
 
     assert_equal item["id"], id
     end
+
+    test "can visit create" do
+      item_params = { name: "Computer", description: "awesome compu"}
+      post :create, item: item_params, format: :json
+      item = Item.last
+
+      assert_response :success
+      assert_equal item.name, item_params[:name]
+    end
 end
