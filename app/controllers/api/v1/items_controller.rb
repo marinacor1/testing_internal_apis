@@ -15,11 +15,11 @@ class Api::V1::ItemsController < ApplicationController
   end
 
   def update
-    respond_with Item.update(Item.find(params[:id]), item_params), location: nil
+    respond_with Item.update((params[:id]), item_params), location: nil
   end
 
   def destroy
-    respond_with Item.destroy(Item.find(params[:id])), location: nil
+    respond_with Item.delete(params[:id]), location: nil
   end
 
   private
