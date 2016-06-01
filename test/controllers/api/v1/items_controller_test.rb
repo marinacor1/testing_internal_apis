@@ -24,7 +24,7 @@ class Api::V1::ItemsControllerTest < ActionController::TestCase
 
     test "can visit create" do
       item_params = { name: "Computer", description: "awesome compu"}
-      post :create, item: item_params, format: :json
+      post :create, item: item_params, format: :json #params, can use string or symbol for create
       item = Item.last
 
       assert_response :success
@@ -42,5 +42,14 @@ class Api::V1::ItemsControllerTest < ActionController::TestCase
       assert_response :success
       refute_equal previous_name, item.name
       assert_equal "NEW NAME", item.name
+    end
+
+    test "can delete an item" do
+      item = Item.last
+
+      delete :destroy, id: item.id, format: :json
+
+      assert_response :success
+      refute Item.find_by(id: item.id)
     end
 end

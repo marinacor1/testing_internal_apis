@@ -18,6 +18,10 @@ class Api::V1::ItemsController < ApplicationController
     respond_with Item.update(Item.find(params[:id]), item_params), location: nil
   end
 
+  def destroy
+    respond_with Item.destroy(Item.find(params[:id])), location: nil
+  end
+
   private
 
   def item_params
